@@ -36,7 +36,7 @@ public class ImportantQuestionTest {
     }
 
     @Test
-    public void IsVisibleTextWhenClickedButton() {
+    public void isVisibleTextWhenClickedButton() {
 
         WebDriver driver = driverRule.getDriver();
 

@@ -9,6 +9,8 @@ import practicum.EnvConfig;
 import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 
+import static practicum.EnvConfig.EXPECTED_ANSWERS_IMPORTANT_QUESTIONS;
+
 public class MainPage {
     private final WebDriver driver;
     //локатор для кнопки "да все привыкли"
@@ -45,16 +47,6 @@ public class MainPage {
     private final By answersImportantQuestionsList_7 = By.xpath(".//div[@id='accordion__panel-7']/p");
     //Массив локаторов из текстовых ответов раздела "Вопрсоы о важном"
     private final By[] answersImportantQuestionsArray = {answersImportantQuestionsList_0, answersImportantQuestionsList_1, answersImportantQuestionsList_2, answersImportantQuestionsList_3, answersImportantQuestionsList_4, answersImportantQuestionsList_5, answersImportantQuestionsList_6, answersImportantQuestionsList_7};
-    //Массив ожидаемых ответов к вопросам
-    private final String[] expectedAnswersImportantQuestions = {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
-            "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.",
-            "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.",
-            "Только начиная с завтрашнего дня. Но скоро станем расторопнее.",
-            "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.",
-            "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.",
-            "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.",
-            "Да, обязательно. Всем самокатов! И Москве, и Московской области."
-    };
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -109,7 +101,7 @@ public class MainPage {
     //метод для сравнения текстовых ответов с ожидаемыми ответами
     public boolean contentIsDisplayed(int listIndex) {
         By locator = answersImportantQuestionsArray[listIndex];
-        String expectedAnswersText = expectedAnswersImportantQuestions[listIndex];
+        String expectedAnswersText = EXPECTED_ANSWERS_IMPORTANT_QUESTIONS[listIndex];
 
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));

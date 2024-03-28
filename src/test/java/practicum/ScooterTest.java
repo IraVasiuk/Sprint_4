@@ -7,7 +7,7 @@ import practicum.pages.MainPage;
 import practicum.pages.StatusPage;
 
 public class ScooterTest {
-    private final String INVALID_ORDER_NUMBER = "123";
+    private final String invalidOrderNumber= "123";
 
     @Rule
     public DriverRule driverRule = new DriverRule();
@@ -20,7 +20,7 @@ public class ScooterTest {
 
         main.open();
         main.clickOnOrderStatus();
-        main.enterOrderNumber(INVALID_ORDER_NUMBER);
+        main.enterOrderNumber(invalidOrderNumber);
 
         StatusPage status = main.clickOnGo();
         status.checkNotFound();
